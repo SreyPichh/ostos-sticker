@@ -1,0 +1,3 @@
+# ostos-sticker
+
+npm install
