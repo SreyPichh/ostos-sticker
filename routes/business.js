@@ -23,9 +23,9 @@ router.post('/create', (req, res) => {
   
   const db = dbService.getDbServiceInstance()
   const result = db.insertNewBusiness(name, logo, address, phone_number, email, aba_name, acc_number, qr_code, invoice_toptext, invoice_note, digital_sign, facebook_link, instagram_link)
-  // result
-  // .then(data => res.json({sucess: true}))
-  // .catch(err => console.log(err))
+  result
+  .then(data => res.json({sucess: true}))
+  .catch(err => console.log(err))
 })
 
 

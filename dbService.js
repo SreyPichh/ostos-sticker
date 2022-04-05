@@ -22,6 +22,9 @@ class DbService {
   static getDbServiceInstance() {
     return instance ? instance : new DbService()
   }
+
+  //Business
+
   async getAllData() {
     try {
       const res = await new Promise((resolve, reject) => {
@@ -31,8 +34,6 @@ class DbService {
           resolve(results)
         })
       })
-      console.log('here now')
-      console.log(res)
       return res
     }
     catch (error) {
@@ -51,6 +52,8 @@ class DbService {
           resolve(result.insertId)
         })
       })
+      console.log(insertId)
+      return insertId
     } catch (error) {
       console.log(error)
     }
