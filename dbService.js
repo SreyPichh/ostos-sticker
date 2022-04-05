@@ -45,15 +45,21 @@ class DbService {
       const created_date = new Date()
       console.log(created_date)
       const insertId = await new Promise((resolve, reject) => {
-        console.log("-------")
         const query = "INSERT INTO business (name, logo, address, phone_number, email, aba_name, acc_number, qr_code, invoice_toptext, invoice_note, digital_sign, facebook_link, instagram_link) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
         connection.query(query, [name, logo, address, phone_number, email, aba_name, acc_number, qr_code, invoice_toptext, invoice_note, digital_sign, facebook_link, instagram_link], (err, result) => {
           if (err) reject(new Error (err.message))
           resolve(result.insertId)
         })
       })
-      // console.log(insertId)
-      // return res
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  //employee
+  async getAllEmployee(){
+    try {
+
     } catch (error) {
       console.log(error)
     }
