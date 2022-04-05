@@ -62,7 +62,30 @@ class DbService {
   //employee
   async getAllEmployee(){
     try {
+      const employeeResult = await new Promise((resolve, reject) => {
+        const query = "SELECT * FROM employee"
+        connection.query(query, (err, results) => {
+          if (err) reject(new Error (err.message))
+          resolve(results)
+        })
+      })
+      return employeeResult
+    } 
+    catch (error) {
+      console.log(error)
+    }
+  }
 
+  async insertNewEmployee(name, email, phone_number, dob) {
+    try{
+      const  insertidEmployee = await new Promise((resolve, reject) => {
+        const query = "INSERT INTO employee (name, email, phone_number, dob) VALUE (?, ?, ?, ?)"
+        connection.query(query, [name, email, phone_number, dob], (err, result) => {
+          if (err) reject(new Error(err.message))
+          resolve(result.insertidEmployee)
+        })
+      })
+      return insertidEmployee
     } catch (error) {
       console.log(error)
     }
