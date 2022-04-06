@@ -1,4 +1,5 @@
 const express = require('express')
+const { append } = require('express/lib/response')
 const router = express.Router()
 
 
@@ -44,6 +45,9 @@ router.get('/', (req, res) => {
 // Update
 
 
-// Update
+// Delete
+append.delete('/delete/:id', (req, res) => {
+  const { id } = req.params
+})
 
 module.exports = router

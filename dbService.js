@@ -75,6 +75,22 @@ class DbService {
     }
   }
 
+  async deleteBusinessById(id) {
+    try {
+      id = parseInt(id, 10)
+      const response = new Promise ((resolve, reject) => {
+        const query = "DELETE FROM business WHERE id = ?"
+        connection.query(query, [id], (err, result) => {
+          if(err) reject(new Error(err.message))
+          resolve(result)
+        })
+      })
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   //employee
   async getAllEmployee(){
     try {
