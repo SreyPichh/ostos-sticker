@@ -43,6 +43,14 @@ router.get('/', (req, res) => {
 })
 
 // Update
+router.patch('/:id', (req, res) => {
+  const { id, name } = req.body
+  const db = dbService.getDbServiceInstance()
+  const result = db.updateBusinessById(id)
+  result
+  .then()
+  .catch(err => console.log(err))
+})
 
 
 // Delete
@@ -51,8 +59,9 @@ router.delete('/:id', (req, res) => {
   const db = dbService.getDbServiceInstance()
   const result = db.deleteBusinessById(id)
   result
-  .then(data => res.json({success: true}))
+  .then(data => res.json({success: data}))
   .catch(err => console.log(err))
+  
 })
 
 module.exports = router

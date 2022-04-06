@@ -82,11 +82,29 @@ class DbService {
         const query = "DELETE FROM business WHERE id = ?"
         connection.query(query, [id], (err, result) => {
           if(err) reject(new Error(err.message))
+          resolve(result.affectedRows)
+        })
+      })
+      return response === 1 ? false : true
+
+    } catch (error) {
+      console.log(error)
+      return false
+    }
+  }
+
+  async updateBusinessById(id, name) {
+    try {
+      id = parseInt(id, 10)
+      const response = new Promise ((resolve, reject) => {
+        const query = "UPDATE business SET name = ? WHERE id = ?"
+        connection.query(query, [name, id], (err, result) => {
+          if (err) reject(new Error(err.message))
           resolve(result)
         })
       })
-
-    } catch (error) {
+    }
+    catch(error) {
       console.log(error)
     }
   }
