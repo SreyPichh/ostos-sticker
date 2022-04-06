@@ -46,8 +46,13 @@ router.get('/', (req, res) => {
 
 
 // Delete
-append.delete('/delete/:id', (req, res) => {
+router.delete('/delete/:id', (req, res) => {
   const { id } = req.params
+  const db = dbService.getDbServiceInstance()
+  const result = db.deleteBusinessById(id)
+  result
+  .then(data => res.json({success: true}))
+  .catch(err => console.log(err))
 })
 
 module.exports = router
