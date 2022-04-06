@@ -7,7 +7,7 @@ const dbService = require('../dbService')
 
 
 // Create
-router.post('/create', (req, res) => {
+router.post('/', (req, res) => {
   const name = req.body.name
   const logo = req.body.logo
   const address = req.body.address
@@ -46,7 +46,7 @@ router.get('/', (req, res) => {
 
 
 // Delete
-router.delete('/delete/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   const { id } = req.params
   const db = dbService.getDbServiceInstance()
   const result = db.deleteBusinessById(id)
