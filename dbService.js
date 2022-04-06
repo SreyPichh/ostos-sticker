@@ -52,8 +52,24 @@ class DbService {
           resolve(result.insertId)
         })
       })
-      console.log(insertId)
-      return insertId
+      //send back as an object
+      return {
+        id: insertId,
+        name: name,
+        logo: logo,
+        address: address,
+        phone_number: phone_number,
+        email: email,
+        aba_name: aba_name,
+        acc_number: acc_number,
+        qr_code: qr_code, 
+        invoice_toptext: invoice_toptext,
+        invoice_note: invoice_note,
+        digital_sign: digital_sign,
+        facebook_link: facebook_link,
+        instagram_link: instagram_link,
+        created_date: created_date
+      }
     } catch (error) {
       console.log(error)
     }
@@ -85,7 +101,11 @@ class DbService {
           resolve(result.insertidEmployee)
         })
       })
-      return insertidEmployee
+      return {
+        id: insertidEmployee,
+        name: name,
+        email: email
+      }
     } catch (error) {
       console.log(error)
     }
