@@ -43,12 +43,12 @@ router.get('/', (req, res) => {
 })
 
 // Update
-router.patch('/:id', (req, res) => {
+router.patch('/', (req, res) => {
   const { id, name } = req.body
   const db = dbService.getDbServiceInstance()
   const result = db.updateBusinessById(id)
   result
-  .then()
+  .then(data => ({success: data}))
   .catch(err => console.log(err))
 })
 

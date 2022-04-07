@@ -100,12 +100,14 @@ class DbService {
         const query = "UPDATE business SET name = ? WHERE id = ?"
         connection.query(query, [name, id], (err, result) => {
           if (err) reject(new Error(err.message))
-          resolve(result)
+          resolve(result.affectedRows)
         })
       })
+      return response === 1 ? true : false
     }
     catch(error) {
       console.log(error)
+      return false
     }
   }
 
@@ -141,6 +143,23 @@ class DbService {
         email: email
       }
     } catch (error) {
+      console.log(error)
+    }
+  }
+
+  async deleteEmployeeById(id) {
+    try {
+      id  = parseInt(id, 10)
+      const response = new Promise((resolve, reject) => {
+        const query = "DELETE FROM employee WHERE id =?"
+        connection.query(query, [id], (err, result) => {
+          if (err) reject(new Error(err.message))
+          resolve(result.affectedRows)
+        })
+      })
+      return response === 1 ? false : true
+     }
+    catch(error) {
       console.log(error)
     }
   }

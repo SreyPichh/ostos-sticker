@@ -4,7 +4,7 @@ const router = express.Router()
 const dbService = require('../dbService')
 
 // Create
-router.post('/create', (req, res) => {
+router.post('/', (req, res) => {
   const name = req.body.name
   const email = req.body.email
   const phone_number = req.body.phone_number
@@ -30,20 +30,17 @@ router.get('/', (req, res) => {
 })
 
 
-
-// router.get('/', (req, res) => {
-//   const db = dbService.getDbServiceInstance()
-//   const result = db.getAllData()
-//   console.log(result)
-//   result
-//   .then(data => res.json({data: data}))
-//   .catch(err => console.log(err))
-  // res.status(500)
-
-
 // Update
 
 
-// Update
+// Delete
+router.delete('/:id', (req, res) => {
+  const { id } = req.params
+  const db = dbService.getDbServiceInstance()
+  const result = db.deleteEmployeeById(id)
+  result
+  .then(data => res.json({success: data}))
+  .catch(err => console.log(err))
+})
 
 module.exports = router
