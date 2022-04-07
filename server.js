@@ -35,6 +35,14 @@ app.use('/api/users', userRouter)
 const employeeRouter = require('./routes/employee')
 app.use('/api/employee', employeeRouter)
 
+/* Error handler middleware */
+app.use((err, req, res, next) => {
+  const statusCode = err.statusCode || 500;
+  console.error(err.message, err.stack);
+  res.status(statusCode).json({ message: err.message });
+  return;
+});
+
 //PORT
 const port = process.env.PORT || 3000
 app.listen(port)  

@@ -43,7 +43,7 @@ router.get('/', (req, res) => {
 })
 
 // Update
-router.patch('/', (req, res) => {
+router.put('/:id', (req, res) => {
   const { id, name } = req.body
   const db = dbService.getDbServiceInstance()
   const result = db.updateBusinessById(id)

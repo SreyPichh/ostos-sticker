@@ -31,7 +31,9 @@ router.get('/', (req, res) => {
 
 
 // Update
-
+router.put('/:id', (req, res) => {
+  // const { id }
+})
 
 // Delete
 router.delete('/:id', (req, res) => {
